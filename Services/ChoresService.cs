@@ -12,6 +12,12 @@ public class ChoresService
         _choresRepository = choresRepository;
     }
 
+    internal Chore CreateChore(Chore choreData)
+    {
+        Chore chore = _choresRepository.CreateChore(choreData);
+        return chore;
+    }
+
     internal string DestroyChore(int choreId)
     {
         Chore chore = GetChoreById(choreId);

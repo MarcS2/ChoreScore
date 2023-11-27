@@ -52,5 +52,18 @@ namespace ChoreScore.Controllers
                 return BadRequest(error.Message);
             }
         }
+        [HttpPost]
+        public ActionResult<Chore> CreateChore([FromBody] Chore choreData)
+        {
+            try
+            {
+                Chore chore = _choresService.CreateChore(choreData);
+                return Ok(chore);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }

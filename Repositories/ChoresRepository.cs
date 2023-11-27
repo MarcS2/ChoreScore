@@ -2,6 +2,7 @@
 
 
 
+
 namespace ChoreScore.Repositories;
 
 public class ChoresRepository
@@ -15,6 +16,21 @@ public class ChoresRepository
             new Chore(2, "complain", "complain about said chores"),
             new Chore(3, "procrastinate", "don't do the chores")
         ];
+    }
+
+    internal Chore CreateChore(Chore choreData)
+    {
+        Chore lastChore = _chores[_chores.Count - 1];
+        if (lastChore == null)
+        {
+            choreData.Id = 1;
+        }
+        else
+        {
+            choreData.Id = lastChore.Id + 1;
+        }
+        _chores.Add(choreData);
+        return choreData;
     }
 
     internal void DestroyChore(Chore chore)
